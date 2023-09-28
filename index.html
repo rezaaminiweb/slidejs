@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+       body{
+        background:linear-gradient(45deg , rgb(202, 147, 147) , rgb(92, 92, 151) , rgb(120, 120, 120) ,rgb(120, 157, 120))
+       }
+        .container{
+            width:95%;
+            height: 100vh;
+            margin: auto;
+            /* border: 1px solid black; */
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            >figure{
+                /* border: 7px solid red; */
+                width: 600px;
+                height: 400px;
+                /* overflow: hidden; */
+                >img{
+                    object-fit: cover;
+                    width: 100%;
+                    height: 100%;
+
+                }
+            }
+
+        }
+        .img{
+            
+            /* display: none; */
+            /* object-fit: contain; */
+            animation: reza 1.5s;
+            
+        }
+        @keyframes reza {
+            from{
+                opacity: 0;
+            }
+            to{
+                opacity: 1;
+            }
+            
+        }
+        .icons{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            >i{
+                margin: 0px 10px;
+                cursor: pointer;
+                /* position: absolute; */
+                
+
+            }
+            #prev{
+                /* position: absolute; */
+                top: 47%;
+                left: 0;
+                background-color: black;
+                color: white;
+                padding: 15px;
+                font-size: 25px;
+                margin: 0px 20px;
+            }
+            #next{
+                /* position: absolute; */
+                top: 47%;
+                right: 0;
+                background-color: black;
+                color: white;
+                padding: 15px;
+                font-size: 25px;
+                margin: 0px 20px;
+            }
+        }
+        .bars{
+            display: flex;
+            justify-content: center;
+            >.bar{
+                margin: 0px 5px;
+                width: 15px;
+                height: 15px;
+                background-color: rgb(216, 147, 216);
+                border-radius: 50%;
+            }
+        }
+        .active{
+            width: 15px;
+                height: 15px;
+            background-color: blue;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="container position-relative p-0 col-12 d-flex justify-content-center flex-wrap">
+        <figure class="img anime col-8">
+            <img src="img/eb3aab0d6b60370ec65607d7122ab7df.jpg" alt="" >
+        </figure>
+        <figure class="img anime col-8">
+            <img src="img/Most-Expensive-Whiskies-0-Hero-1074x711.jpg">
+
+        </figure>
+        
+        <figure class="img anime col-8">
+            <img src="img/5518724.jpg" alt="" >
+        </figure>
+        <figure class="img anime col-8">
+            <img src="img/white-wine-glasses.webp" alt="" >
+        </figure>
+        <figure class="img anime col-8">
+            <img src="img/wp4775833.jpg" alt="">
+        </figure>
+        <figure class="img anime col-8">
+            <img src="img/rum-vs-whiskey-1024x576.webp" alt="" >
+        </figure>
+        <div class="col-12 icons">
+            <i class="fa-solid fa-arrow-left " id="prev" onclick="reza(-1)"></i>
+            <i class="fa-solid fa-arrow-right " id="next" onclick="reza(1)"></i>
+        </div>
+        
+    </div>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script>
+        let index=0
+        reza(index)
+        function reza(i){
+            index +=i
+            images = document.getElementsByClassName('img');
+            bars = document.getElementsByClassName('bar')
+            for(i=0; i<bars.length;i++){
+                bars[i].className = bars[i].className.replace('active' , '')
+            }
+            for(i=0 ; i<images.length;i++){
+            images[i].style.display='none'
+            // console.log(image[3]);
+            }
+            if(index > images.length -1){
+                index=0
+            }else if( index < 0){
+                index=images.length-1
+            }
+            images[index].style.display='block'
+            // bars[index].className += 'active'
+
+        }    
+    </script>
+</body>
+</html>
